@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Information Form</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="images/student-logo.png"
+     alt="Student Information System Logo"
+     width="100">
+        <h1>Student Information System</h1>
+        <p>Enter your information below</p>
+    </header>
+
+    <main>
+
+        <h2>Student Registration Form</h2>
+
+        <form id="studentForm">
+            <p id="message"></p>
+
+            <label for="studentID">Student ID:</label>
+            <input type="text" id="studentID"
+                name="studentID" required>
+
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname"
+                name="fullname" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email"
+                name="email" required>
+
+            <label for="program">Program of Study:</label>
+            <input type="text" id="program"
+                name="program" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone"
+                name="phone" required>
+
+            <button type="submit">
+                Submit Information
+            </button>
+
+        </form>
+
+    </main>
+
+    <footer>
+        <p>CMPS1134 - Fundamentals of Computing</p>
+        <p>Student Information Form - Task 2</p>
+    </footer>
+
+<script>
+    const form = document.getElementById("studentForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        message.textContent =
+            "Your information has been checked successfully!";
+
+        message.style.color = "green";
+
+        form.reset();
+    });
+</script>
+
+</body>
+</html>

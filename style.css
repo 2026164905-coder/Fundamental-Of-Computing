@@ -1,0 +1,88 @@
+
+/* General page styling */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+header img {
+    display: block;
+    margin: 0 auto 15px;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+/* Header styling */
+header {
+    background-color: #123456;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* Main form container */
+main {
+    background-color: white;
+    max-width: 550px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #123456;
+}
+
+/* Form labels */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+/* Input fields */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+/* Submit button */
+button {
+    width: 100%;
+    background-color: #123456;
+    color: white;
+    padding: 13px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2468a0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #123456;
+    color: white;
+    padding: 15px;
+}
