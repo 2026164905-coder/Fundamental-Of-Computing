@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fundamentals of Computing</title>
+</head>
+<body>
+    <h1>Fundamentals of Computing</h1>
+    <h2>About Course</h2>
+    <p>
+        The Fundamentals of Computing course introduces
+        students to basic Computer Science concepts.
+        Students learn about computer hardware, software,
+        programming, operating systems, networks, and
+        databases.
+    </p>
+</body>
+</html>
