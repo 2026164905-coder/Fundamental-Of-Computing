@@ -6,3 +6,9 @@
 
 /* Embedded course video */
 .video-embed{width:100%;aspect-ratio:16/9;background:#061526;border:1px solid #dce5ef;border-radius:12px;overflow:hidden;box-shadow:0 18px 45px #10243b18}.video-embed iframe{display:block;width:100%;height:100%;border:0}.video-fallback{margin:13px 0 0;color:#657386;font-size:12px}.video-fallback a{color:#247bd5;text-decoration:underline;text-underline-offset:3px}
+
+/* Distinct artwork placed above each course video */
+.video-item{margin-top:28px}
+.video-item h3{font:600 18px 'Space Grotesk';margin:0 0 12px;color:var(--ink)}
+.video-poster{width:100%;aspect-ratio:900/260;border-radius:12px;overflow:hidden;margin-bottom:14px;box-shadow:0 14px 34px #10243b18}
+.video-poster svg{display:block;width:100%;height:100%}
