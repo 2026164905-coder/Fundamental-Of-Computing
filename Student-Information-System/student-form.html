@@ -1,81 +1,296 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Student Information Form</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register and manage student information.">
+  <title>Student Registration | Student Information System</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .sis-page{max-width:1120px;margin:38px auto;padding:0 22px 55px}
+    .sis-heading{margin-bottom:24px}.sis-heading h2{font-size:clamp(1.8rem,4vw,2.5rem);color:#12345a;margin-bottom:8px}
+    .sis-heading p,.sis-note{color:#617187;line-height:1.6}
+    .sis-card{background:#fff;border:1px solid #e0e8f1;border-radius:16px;padding:26px;box-shadow:0 8px 28px #10233f0d;margin-bottom:24px}
+    .sis-card h3{color:#12345a;margin-bottom:18px;font-size:1.2rem}
+    .sis-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .sis-field{display:flex;flex-direction:column;gap:7px}.sis-field label{font-weight:700;font-size:.92rem;color:#243b57}
+    .sis-field input,.sis-search{width:100%;padding:12px 13px;border:1px solid #cbd6e2;border-radius:8px;font:inherit;color:#10233f;background:#fff}
+    .sis-field input:focus,.sis-search:focus{outline:3px solid #2388e82b;border-color:#2388e8}
+    .sis-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .sis-btn{border:0;border-radius:8px;padding:12px 17px;font-weight:700;font-size:.94rem;cursor:pointer;background:#1769b0;color:white}
+    .sis-btn:hover{filter:brightness(.94)}.sis-btn.secondary{background:#eaf1f8;color:#12345a}.sis-btn.danger{background:#b83232;color:white}
+    .sis-btn.small{padding:7px 10px;font-size:.82rem;margin:2px}
+    #sisMessage{min-height:24px;margin-bottom:10px;font-weight:700}.sis-note{font-size:.85rem;margin-top:14px}
+    .sis-toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+    .sis-toolbar .sis-search{max-width:360px}.sis-count{font-weight:700;color:#1769b0}
+    .sis-table-wrap{overflow-x:auto}table.sis-table{width:100%;border-collapse:collapse;min-width:760px}
+    .sis-table th,.sis-table td{text-align:left;padding:13px 11px;border-bottom:1px solid #e7edf3;font-size:.9rem}
+    .sis-table th{background:#f3f7fb;color:#173d60}.sis-empty{text-align:center!important;color:#718096;padding:30px!important}
+    .sis-footer{text-align:center;color:#d2deeb;background:#10243d;padding:25px}
+    @media(max-width:650px){.sis-grid{grid-template-columns:1fr}.sis-card{padding:19px}.sis-toolbar{align-items:stretch}.sis-toolbar .sis-search{max-width:none}}
+  </style>
 </head>
-
 <body>
+  <header class="navbar">
+    <h2>💻 Student Information System</h2>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="../index.html">Course Website</a>
+      <a href="student-form.html" aria-current="page">Student Form</a>
+    </nav>
+  </header>
 
-    <header>
-        <img src="images/student-logo.png"
-     alt="Student Information System Logo"
-     width="100">
-        <h1>Student Information System</h1>
-        <p>Enter your information below</p>
-    </header>
+  <main class="sis-page">
+    <div class="sis-heading">
+      <h2>Student Registration</h2>
+      <p>Enter student details below. Saved records will appear in the student directory.</p>
+    </div>
 
-    <main>
+    <section class="sis-card" aria-labelledby="formTitle">
+      <h3 id="formTitle">Register a Student</h3>
+      <p id="sisMessage" role="status" aria-live="polite"></p>
+      <form id="studentForm">
+        <div class="sis-grid">
+          <div class="sis-field">
+            <label for="studentID">Student ID *</label>
+            <input type="text" id="studentID" name="studentID" placeholder="e.g. UB-2026-001" required maxlength="30">
+          </div>
+          <div class="sis-field">
+            <label for="fullname">Full Name *</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required maxlength="100">
+          </div>
+          <div class="sis-field">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="student@example.com" required maxlength="120">
+          </div>
+          <div class="sis-field">
+            <label for="program">Program of Study *</label>
+            <input type="text" id="program" name="program" placeholder="e.g. Information Technology" required maxlength="100">
+          </div>
+          <div class="sis-field">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required maxlength="30">
+          </div>
+        </div>
+        <div class="sis-actions">
+          <button class="sis-btn" type="submit" id="saveButton">Save Student</button>
+          <button class="sis-btn secondary" type="reset" id="resetButton">Clear Form</button>
+          <button class="sis-btn secondary" type="button" id="cancelEdit" hidden>Cancel Edit</button>
+        </div>
+      </form>
+      <p class="sis-note">Note: This demo stores records in this browser on this device. Clearing browser site data may erase them. Do not enter sensitive personal information.</p>
+    </section>
 
-        <h2>Student Registration Form</h2>
+    <section class="sis-card" aria-labelledby="recordsTitle">
+      <div class="sis-toolbar">
+        <div>
+          <h3 id="recordsTitle">Student Records</h3>
+          <p class="sis-count" id="studentCount">0 students registered</p>
+        </div>
+        <input class="sis-search" type="search" id="searchStudents" placeholder="Search name or student ID..." aria-label="Search students">
+      </div>
+      <div class="sis-actions" style="margin:0 0 16px">
+        <button class="sis-btn secondary" type="button" id="exportButton">Download CSV</button>
+        <button class="sis-btn danger" type="button" id="clearAllButton">Delete All Records</button>
+      </div>
+      <div class="sis-table-wrap">
+        <table class="sis-table">
+          <thead><tr><th>Student ID</th><th>Full Name</th><th>Email</th><th>Program</th><th>Phone</th><th>Actions</th></tr></thead>
+          <tbody id="studentTableBody"><tr><td class="sis-empty" colspan="6">No student records yet. Add a student using the form above.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 
-        <form id="studentForm">
-            <p id="message"></p>
+  <footer class="sis-footer">
+    <p>CMPS1134 - Fundamentals of Computing</p>
+    <p>Student Information System | University of Belize</p>
+  </footer>
 
-            <label for="studentID">Student ID:</label>
-            <input type="text" id="studentID"
-                name="studentID" required>
+  <script>
+    (() => {
+      "use strict";
+      const STORAGE_KEY = "ubStudentInformationRecords_v1";
+      const form = document.getElementById("studentForm");
+      const message = document.getElementById("sisMessage");
+      const tbody = document.getElementById("studentTableBody");
+      const count = document.getElementById("studentCount");
+      const search = document.getElementById("searchStudents");
+      const saveButton = document.getElementById("saveButton");
+      const cancelEdit = document.getElementById("cancelEdit");
+      let editingId = null;
+      let students = [];
 
-            <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname"
-                name="fullname" required>
-
-            <label for="email">Email Address:</label>
-            <input type="email" id="email"
-                name="email" required>
-
-            <label for="program">Program of Study:</label>
-            <input type="text" id="program"
-                name="program" required>
-
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone"
-                name="phone" required>
-
-            <button type="submit">
-                Submit Information
-            </button>
-
-        </form>
-
-    </main>
-
-    <footer>
-        <p>CMPS1134 - Fundamentals of Computing</p>
-        <p>Student Information Form - Task 2</p>
-    </footer>
-
-<script>
-    const form = document.getElementById("studentForm");
-    const message = document.getElementById("message");
-
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        message.textContent =
-            "Your information has been checked successfully!";
-
-        message.style.color = "green";
-
+      function loadStudents() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+          students = Array.isArray(stored) ? stored : [];
+        } catch (error) {
+          students = [];
+          showMessage("Saved records could not be read. Browser storage may be unavailable.", true);
+        }
+      }
+      function persistStudents() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+          return true;
+        } catch (error) {
+          showMessage("Could not save records. Check browser storage space or privacy settings.", true);
+          return false;
+        }
+      }
+      function showMessage(text, isError = false) {
+        message.textContent = text;
+        message.style.color = isError ? "#b83232" : "#187342";
+      }
+      function getFormData() {
+        return {
+          studentID: document.getElementById("studentID").value.trim(),
+          fullname: document.getElementById("fullname").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          program: document.getElementById("program").value.trim(),
+          phone: document.getElementById("phone").value.trim()
+        };
+      }
+      function resetEditor() {
+        editingId = null;
         form.reset();
-    });
-</script>
-
+        saveButton.textContent = "Save Student";
+        cancelEdit.hidden = true;
+        document.getElementById("formTitle").textContent = "Register a Student";
+      }
+      function addCell(row, value) {
+        const cell = document.createElement("td");
+        cell.textContent = value || "";
+        row.appendChild(cell);
+        return cell;
+      }
+      function renderStudents() {
+        const query = search.value.trim().toLowerCase();
+        const filtered = students.filter(student =>
+          [student.studentID, student.fullname, student.email, student.program, student.phone]
+            .some(value => String(value || "").toLowerCase().includes(query))
+        );
+        count.textContent = students.length + (students.length === 1 ? " student registered" : " students registered");
+        tbody.replaceChildren();
+        if (!filtered.length) {
+          const row = document.createElement("tr");
+          const cell = document.createElement("td");
+          cell.colSpan = 6;
+          cell.className = "sis-empty";
+          cell.textContent = students.length ? "No matching students found." : "No student records yet. Add a student using the form above.";
+          row.appendChild(cell);
+          tbody.appendChild(row);
+          return;
+        }
+        filtered.forEach(student => {
+          const row = document.createElement("tr");
+          addCell(row, student.studentID);
+          addCell(row, student.fullname);
+          addCell(row, student.email);
+          addCell(row, student.program);
+          addCell(row, student.phone);
+          const actions = document.createElement("td");
+          const edit = document.createElement("button");
+          edit.type = "button";
+          edit.className = "sis-btn small secondary";
+          edit.textContent = "Edit";
+          edit.addEventListener("click", () => startEdit(student.recordId));
+          const remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "sis-btn small danger";
+          remove.textContent = "Delete";
+          remove.addEventListener("click", () => deleteStudent(student.recordId));
+          actions.append(edit, remove);
+          row.appendChild(actions);
+          tbody.appendChild(row);
+        });
+      }
+      function startEdit(recordId) {
+        const student = students.find(item => item.recordId === recordId);
+        if (!student) return;
+        editingId = recordId;
+        for (const field of ["studentID", "fullname", "email", "program", "phone"]) {
+          document.getElementById(field).value = student[field] || "";
+        }
+        saveButton.textContent = "Update Student";
+        cancelEdit.hidden = false;
+        document.getElementById("formTitle").textContent = "Edit Student Details";
+        showMessage("Editing " + student.fullname + ". Make your changes and save.");
+        form.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      function deleteStudent(recordId) {
+        const student = students.find(item => item.recordId === recordId);
+        if (!student || !confirm("Delete the record for " + student.fullname + "?")) return;
+        const previous = students;
+        students = students.filter(item => item.recordId !== recordId);
+        if (!persistStudents()) { students = previous; return; }
+        if (editingId === recordId) resetEditor();
+        renderStudents();
+        showMessage("Student record deleted.");
+      }
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const data = getFormData();
+        const duplicate = students.some(student =>
+          student.studentID.toLowerCase() === data.studentID.toLowerCase() && student.recordId !== editingId
+        );
+        if (duplicate) {
+          showMessage("That student ID is already registered. Please use a unique ID.", true);
+          document.getElementById("studentID").focus();
+          return;
+        }
+        const previous = students;
+        if (editingId) {
+          students = students.map(student => student.recordId === editingId
+            ? { ...student, ...data, updatedAt: new Date().toISOString() }
+            : student);
+        } else {
+          students.push({ ...data, recordId: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2), createdAt: new Date().toISOString() });
+        }
+        if (!persistStudents()) { students = previous; return; }
+        const wasEditing = Boolean(editingId);
+        resetEditor();
+        renderStudents();
+        showMessage(wasEditing ? "Student information updated and saved." : "Student registered and saved successfully.");
+      });
+      cancelEdit.addEventListener("click", () => { resetEditor(); showMessage("Edit cancelled."); });
+      document.getElementById("resetButton").addEventListener("click", () => {
+        if (editingId) resetEditor();
+        showMessage("Form cleared.");
+      });
+      search.addEventListener("input", renderStudents);
+      document.getElementById("clearAllButton").addEventListener("click", () => {
+        if (!students.length) { showMessage("There are no records to delete.", true); return; }
+        if (!confirm("This will permanently delete all student records saved in this browser. Continue?")) return;
+        const previous = students;
+        students = [];
+        if (!persistStudents()) { students = previous; return; }
+        resetEditor();
+        renderStudents();
+        showMessage("All student records have been deleted.");
+      });
+      document.getElementById("exportButton").addEventListener("click", () => {
+        if (!students.length) { showMessage("There are no records to export.", true); return; }
+        const columns = ["Student ID", "Full Name", "Email", "Program of Study", "Phone Number"];
+        const keys = ["studentID", "fullname", "email", "program", "phone"];
+        const escapeCsv = value => '"' + String(value ?? "").replace(/"/g, '""') + '"';
+        const csv = [columns.map(escapeCsv).join(","), ...students.map(student => keys.map(key => escapeCsv(student[key])).join(","))].join("\r\n");
+        const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "student-records.csv";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        showMessage("Student records exported as CSV.");
+      });
+      loadStudents();
+      renderStudents();
+    })();
+  </script>
 </body>
 </html>
