@@ -1,88 +1,132 @@
 
-/* General page styling */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-header img {
-    display: block;
-    margin: 0 auto 15px;
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-}
-/* Header styling */
-header {
-    background-color: #123456;
-    color: white;
-    text-align: center;
-    padding: 30px;
+    background: #f1f6fc;
+    color: #10233f;
 }
 
-header h1 {
-    margin-bottom: 10px;
+/* Navigation */
+.navbar {
+    background: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px #00000015;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-/* Main form container */
-main {
-    background-color: white;
-    max-width: 550px;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.navbar h2 {
+    color: #12345a;
 }
 
-h2 {
-    text-align: center;
-    color: #123456;
-}
-
-/* Form labels */
-label {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 7px;
+.nav-links a {
+    text-decoration: none;
+    color: #12345a;
+    margin-left: 20px;
     font-weight: bold;
 }
 
-/* Input fields */
-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 15px;
+.nav-links a:hover {
+    color: #2388e8;
 }
 
-/* Submit button */
-button {
-    width: 100%;
-    background-color: #123456;
+/* Hero section */
+.hero {
+    min-height: 350px;
+    padding: 60px 8%;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg, #061629, #073c70);
     color: white;
-    padding: 13px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 25px;
-    font-size: 16px;
-    cursor: pointer;
 }
 
-button:hover {
-    background-color: #2468a0;
+.hero h1 {
+    font-size: 65px;
+    line-height: 1.1;
+}
+
+.hero span {
+    color: #35a4ff;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+/* Main content */
+.content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    padding: 40px 5%;
+}
+
+.course-card,
+.mission-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px #00000012;
+}
+
+.course-card img,
+.mission-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.course-card h2,
+.mission-card h2 {
+    color: #1769b0;
+    margin-bottom: 15px;
+}
+
+.course-card p,
+.mission-card p {
+    line-height: 1.8;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    background-color: #123456;
+    background: #10243d;
     color: white;
-    padding: 15px;
+    text-align: center;
+    padding: 30px;
+}
+
+footer p {
+    margin-top: 10px;
+    color: #cbd8e8;
+}
+
+/* Mobile screens */
+@media (max-width: 750px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links a {
+        margin: 5px;
+    }
 }
