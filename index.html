@@ -6,6 +6,22 @@
   <meta name="description" content="Explore the Fundamentals of Computing course, student projects, and learning resources.">
   <title>Fundamentals of Computing | CMPS1134</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .dillon-profile { background: #f4f5f1; }
+    .dillon-profile-card { display:grid; grid-template-columns:minmax(220px, .78fr) 1.22fr; gap:clamp(28px,5vw,68px); align-items:center; margin-top:38px; padding:clamp(22px,4vw,46px); background:#fff; border:1px solid rgba(16,43,73,.10); border-radius:18px; box-shadow:0 18px 50px rgba(16,43,73,.07); }
+    .dillon-photo-wrap { position:relative; overflow:hidden; border-radius:12px; background:#e7e9e2; }
+    .dillon-photo { display:block; width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center 32%; }
+    .dillon-photo-caption { position:absolute; left:14px; bottom:14px; padding:8px 11px; color:#fff; background:rgba(8,27,48,.82); border-radius:4px; font-size:10px; font-weight:700; letter-spacing:1.5px; }
+    .dillon-copy h2 { margin:10px 0 8px; font-size:clamp(2.2rem,5vw,4.2rem); line-height:1.02; letter-spacing:-.055em; }
+    .dillon-copy h2 span { color:#1768a7; }
+    .dillon-role { margin:0 0 22px; color:#547087; font-size:14px; font-weight:700; letter-spacing:.04em; }
+    .dillon-copy > p:not(.eyebrow):not(.dillon-role) { max-width:650px; color:#53616b; line-height:1.85; font-size:15px; }
+    .dillon-highlights { display:flex; flex-wrap:wrap; gap:9px; margin-top:24px; }
+    .dillon-highlights span { padding:9px 12px; border:1px solid #dce4e8; border-radius:999px; color:#173d60; background:#f7fafb; font-size:12px; font-weight:700; }
+    @media (max-width:700px) { .dillon-profile-card { grid-template-columns:1fr; } .dillon-photo-wrap { max-width:340px; margin:0 auto; } .dillon-copy h2 { font-size:2.7rem; } }
+  </style>
+
 </head>
 <body>
   <header class="site-header">
@@ -73,6 +89,31 @@
       <div><h2>Learning together.<br><span>Building with purpose.</span></h2><p>Our goal is to create a helpful space that shares what we learn in Fundamentals of Computing. Through teamwork, class activities, and projects, we develop our knowledge and practical technology skills.</p></div>
       <div class="mission-stamp">TEAM<br><strong>WORK</strong><br>✳</div>
     </section>
+
+
+  <section class="section dillon-profile" id="dillon-noralez" aria-labelledby="dillon-heading">
+    <div class="section-topline">
+      <p class="eyebrow dark-eyebrow">04 — MEET THE STUDENTS</p>
+      <span class="section-index">STUDENT SPOTLIGHT</span>
+    </div>
+    <div class="dillon-profile-card">
+      <div class="dillon-photo-wrap">
+        <img class="dillon-photo" src="data:image/jpeg;base64,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" alt="Portrait of Dillon Noralez">
+        <span class="dillon-photo-caption">UNIVERSITY OF BELIZE</span>
+      </div>
+      <div class="dillon-copy">
+        <p class="eyebrow dark-eyebrow">STUDENT BIOGRAPHY</p>
+        <h2 id="dillon-heading">Dillon <span>Noralez.</span></h2>
+        <p class="dillon-role">Information Technology Student · Belize</p>
+        <p>Dillon Noralez is a young, ambitious individual from Belize and a student at the University of Belize, currently pursuing a degree in Information Technology. He is passionate about leadership, sports, music, business, and technology. Throughout his school journey, he served as basketball team captain, participated in the 2025 Battle of the Drums, and earned the Most Sociable award. Dillon is hardworking, friendly, and determined to achieve his goals while making a positive impact on his community.</p>
+        <div class="dillon-highlights" aria-label="Dillon's highlights">
+          <span>Basketball Team Captain</span>
+          <span>2025 Battle of the Drums</span>
+          <span>Most Sociable Award</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <section class="section showcase-section" id="videos">
       <div class="section-topline"><p class="eyebrow dark-eyebrow">03 — EXPLORE & LEARN</p><span class="section-index">COURSE HIGHLIGHTS</span></div>
