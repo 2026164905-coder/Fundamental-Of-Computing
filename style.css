@@ -30,3 +30,5 @@
 .malique-avatar span{font:700 clamp(76px,10vw,112px)/1 'Space Grotesk';letter-spacing:-.08em}
 .malique-avatar small{margin-top:24px;color:#d5e5f4;font:9px 'DM Mono';letter-spacing:.13em}
 @media(max-width:700px){.dillon-profile-card{grid-template-columns:1fr;gap:22px;padding:16px}.dillon-photo-wrap,.dillon-photo,.malique-avatar{min-height:240px}.dillon-copy h2{font-size:36px}}
+
+.malique-avatar{position:relative;overflow:hidden}.malique-photo{display:block;width:100%;height:280px;object-fit:cover;object-position:center;border-radius:10px}.malique-avatar small{position:absolute;left:14px;bottom:14px;margin:0;padding:8px 10px;border-radius:4px;background:#07182bdc;color:#fff;font:9px 'DM Mono';letter-spacing:.1em}
